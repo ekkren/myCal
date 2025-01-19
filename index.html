@@ -113,7 +113,7 @@
     const apiKey = "6d30af576b130ae10b25618e024fc6a1"; // Provided OpenWeather API key
     const city = "Istanbul";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=tr`;
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=tr`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=41.00&lon=28.96&appid=${apiKey}&units=metric&lang=tr`;
 
     // Function to update Istanbul's time and date
     function updateTimeAndDate() {
