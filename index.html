@@ -169,7 +169,7 @@
         let forecastHtml = "<div class='forecast'>";
         dailyForecast.slice(0, 5).forEach(item => { // Limit to 5 days
             const date = new Date(item.dt * 1000);
-            const day = date.toLocaleDateString('tr-TR', { weekday: 'short' }); // Short day name in Turkish
+            const day = date.toLocaleDateString('tr-TR', { weekday: 'long' }); // Short day name in Turkish
             const temp = Math.ceil(item.main.temp); // Rounded temperature
             const icon = item.weather[0].icon;
 
