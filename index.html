@@ -163,7 +163,7 @@
             let forecastHtml = "<div class='forecast'>";
             forecast.forEach(item => {
                 const date = new Date(item.dt * 1000);
-                const day = date.toLocaleDateString('tr-TR', { weekday: 'short' });
+                const day = date.toLocaleDateString('tr-TR', { weekday: 'long' });
                 const temp = Math.ceil(item.main.temp); // Rounded to the higher number
                 const icon = item.weather[0].icon;
 
