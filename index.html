@@ -81,12 +81,17 @@
 
     // Function to update Istanbul's time and date
     function updateTimeAndDate() {
-        const options = { timeZone: 'Europe/Istanbul', hour12: false, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const date = new Date().toLocaleString('tr-TR', options);
-        const [weekday, day, month] = date.split(', ');
-
-        document.getElementById("istanbul-time").textContent = new Date().toLocaleTimeString('tr-TR', { timeZone: 'Europe/Istanbul' });
-        document.getElementById("istanbul-date").textContent = `${weekday}, ${day} ${month}`;
+        const now = new Date();
+        const timeOptions = { timeZone: 'Europe/Istanbul', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const dateOptions = { timeZone: 'Europe/Istanbul', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        
+        // Get Istanbul's local time
+        const time = now.toLocaleTimeString('tr-TR', timeOptions);
+        document.getElementById("istanbul-time").textContent = time;
+        
+        // Get Istanbul's local date
+        const date = now.toLocaleDateString('tr-TR', dateOptions);
+        document.getElementById("istanbul-date").textContent = date;
     }
 
     // Function to fetch and display current weather data
