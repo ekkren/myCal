@@ -18,7 +18,7 @@
         .left {
             width: 60%;
             background-color: #f0f0f0;
-            font-size: 24px;
+            font-size: 28px; /* Increased font size for time/date */
         }
         .center {
             width: 30%;
@@ -73,7 +73,7 @@
 </div>
 
 <script>
-    const apiKey = "6d30af576b130ae10b25618e024fc6a1";
+    const apiKey = "YOUR_API_KEY";
     const city = "Istanbul";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=tr`;
 
@@ -136,8 +136,8 @@
     fetchCurrentWeather();
     fetch5DayForecast();
 
-    // Update time every minute
-    setInterval(updateTimeAndDate, 60000);
+    // Update time every second
+    setInterval(updateTimeAndDate, 1000);
 </script>
 
 </body>
