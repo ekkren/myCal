@@ -124,7 +124,7 @@
 
             const weatherHtml = `
                 <div>
-                    <img class="weather-icon" src="https://openweathermap.org/img/wn/${weather.icon}.png" alt="${weather.description}">
+                    <img class="weather-icon" src="https://openweathermap.org/img/wn/${weather.icon}@4x.png" alt="${weather.description}">
                     <p>${weather.description}</p>
                     <h3>${temperature}°C</h3>
                 </div>
@@ -153,7 +153,7 @@
                 forecastHtml += `
                     <div class="forecast-item">
                         <h4>${day}</h4>
-                        <img class="weather-icon" src="https://openweathermap.org/img/wn/${icon}.png" alt="weather icon">
+                        <img class="weather-icon" src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon">
                         <p>${temp}°C</p>
                     </div>
                 `;
