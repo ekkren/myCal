@@ -13,6 +13,12 @@
             height: 100vh;
             justify-content: center;
             align-items: center;
+            background-color: white; /* White background for the entire page */
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            justify-content: space-between;
         }
         .left, .center, .right {
             padding: 20px;
@@ -21,10 +27,11 @@
             flex-direction: column;
             justify-content: center; /* Center content vertically */
             align-items: center; /* Center content horizontally */
+            margin: 10px; /* Added margin to create space between panels */
         }
         .left {
             width: 60%;
-            background-color: #f0f0f0;
+            background-color: #e0f7fa; /* Pastel cyan for left panel */
         }
         #istanbul-time {
             font-size: 128px; /* Increased font size for time */
@@ -34,12 +41,12 @@
         }
         .center {
             width: 30%;
-            background-color: #e0f7fa;
+            background-color: #fce4ec; /* Pastel pink for center panel */
             font-size: 24px;
         }
         .right {
             width: 10%;
-            background-color: #f8e6f0;
+            background-color: #fff3e0; /* Pastel orange for right panel */
             font-size: 18px;
         }
         h1 {
@@ -60,26 +67,28 @@
 </head>
 <body>
 
-<div class="left">
-    <div id="istanbul-time">
-        <!-- Istanbul Time will be displayed here -->
+<div class="container">
+    <div class="left">
+        <div id="istanbul-time">
+            <!-- Istanbul Time will be displayed here -->
+        </div>
+        <div id="istanbul-date">
+            <!-- Istanbul Date will be displayed here -->
+        </div>
     </div>
-    <div id="istanbul-date">
-        <!-- Istanbul Date will be displayed here -->
-    </div>
-</div>
 
-<div class="center">
-    <h1>Current Weather</h1>
-    <div id="current-weather">
-        <!-- Current weather info will be displayed here -->
+    <div class="center">
+        <h1>Current Weather</h1>
+        <div id="current-weather">
+            <!-- Current weather info will be displayed here -->
+        </div>
     </div>
-</div>
 
-<div class="right">
-    <h1>5 Day Forecast</h1>
-    <div id="forecast">
-        <!-- 5 day forecast will be displayed here -->
+    <div class="right">
+        <h1>5 Day Forecast</h1>
+        <div id="forecast">
+            <!-- 5 day forecast will be displayed here -->
+        </div>
     </div>
 </div>
 
