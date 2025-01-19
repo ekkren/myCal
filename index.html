@@ -18,7 +18,7 @@
         .left {
             width: 60%;
             background-color: #f0f0f0;
-            font-size: 56px; /* Increased font size for time */
+            font-size: 64px; /* Increased font size for time */
         }
         .center {
             width: 30%;
@@ -100,7 +100,7 @@
         
         if (data && data.weather && data.main) {
             const weather = data.weather[0];
-            const temperature = data.main.temp;
+            const temperature = Math.ceil(data.main.temp); // Rounded to the higher number
 
             const weatherHtml = `
                 <div>
@@ -127,7 +127,7 @@
             forecast.forEach(item => {
                 const date = new Date(item.dt * 1000);
                 const day = date.toLocaleDateString('tr-TR', { weekday: 'short' });
-                const temp = item.main.temp;
+                const temp = Math.ceil(item.main.temp); // Rounded to the higher number
                 const icon = item.weather[0].icon;
 
                 forecastHtml += `
