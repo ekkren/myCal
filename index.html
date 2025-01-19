@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Istanbul Weather Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Ubuntu', sans-serif; /* Changed font to Ubuntu */
             margin: 0;
             display: flex;
             height: 100vh;
+            justify-content: center;
+            align-items: center;
         }
         .left, .center, .right {
             padding: 20px;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
         }
         .left {
             width: 60%;
@@ -29,7 +36,6 @@
             width: 30%;
             background-color: #e0f7fa;
             font-size: 24px;
-            text-align: center;
         }
         .right {
             width: 10%;
