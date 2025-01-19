@@ -110,14 +110,14 @@
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                const forecastContainer = document.getElementById('forecast');
+                const forecastContainer = document.getElementById('bottom');
                 forecastContainer.innerHTML = '';
                 for (let i = 0; i < data.list.length; i += 8) {
                     const forecast = data.list[i];
                     const date = new Date(forecast.dt * 1000);
                     forecastContainer.innerHTML += `
                         <div class="forecast">
-                            <p>${date.toLocaleDateString('tr-TR', { weekday: 'long' })}</p>
+                            <p>${date.toLocaleDateString('tr-TR', { weekday: 'short' })}</p>
                             <p>${Math.round(forecast.main.temp)}°C</p>
                             <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="Weather icon">
                         </div>
@@ -146,7 +146,7 @@
         <div id="current-weather">Loading weather...</div>
     </div>
     <div id="bottom">
-        <div id="forecast">Loading forecast...</div>
+        <!-- Each forecast day will appear here -->
     </div>
 </body>
 </html>
