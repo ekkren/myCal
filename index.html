@@ -18,7 +18,7 @@
         .left {
             width: 60%;
             background-color: #f0f0f0;
-            font-size: 28px; /* Increased font size for time/date */
+            font-size: 56px; /* Increased font size for time */
         }
         .center {
             width: 30%;
@@ -73,10 +73,9 @@
 </div>
 
 <script>
-    const apiKey = "YOUR_API_KEY";
+    const apiKey = "6d30af576b130ae10b25618e024fc6a1"; // Provided OpenWeather API key
     const city = "Istanbul";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=tr`;
-
     const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=tr`;
 
     // Function to update Istanbul's time and date
@@ -84,11 +83,11 @@
         const now = new Date();
         const timeOptions = { timeZone: 'Europe/Istanbul', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
         const dateOptions = { timeZone: 'Europe/Istanbul', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-        
+
         // Get Istanbul's local time
         const time = now.toLocaleTimeString('tr-TR', timeOptions);
         document.getElementById("istanbul-time").textContent = time;
-        
+
         // Get Istanbul's local date
         const date = now.toLocaleDateString('tr-TR', dateOptions);
         document.getElementById("istanbul-date").textContent = date;
@@ -98,42 +97,52 @@
     async function fetchCurrentWeather() {
         const response = await fetch(apiUrl);
         const data = await response.json();
-        const weather = data.weather[0];
-        const temperature = data.main.temp;
+        
+        if (data && data.weather && data.main) {
+            const weather = data.weather[0];
+            const temperature = data.main.temp;
 
-        const weatherHtml = `
-            <div>
-                <img class="weather-icon" src="https://openweathermap.org/img/wn/${weather.icon}.png" alt="${weather.description}">
-                <p>${weather.description}</p>
-                <h3>${temperature}°C</h3>
-            </div>
-        `;
-        document.getElementById("current-weather").innerHTML = weatherHtml;
+            const weatherHtml = `
+                <div>
+                    <img class="weather-icon" src="https://openweathermap.org/img/wn/${weather.icon}.png" alt="${weather.description}">
+                    <p>${weather.description}</p>
+                    <h3>${temperature}°C</h3>
+                </div>
+            `;
+            document.getElementById("current-weather").innerHTML = weatherHtml;
+        } else {
+            document.getElementById("current-weather").innerHTML = "Weather data not available.";
+        }
     }
 
     // Function to fetch and display 5-day forecast
     async function fetch5DayForecast() {
         const response = await fetch(forecastUrl);
         const data = await response.json();
-        const forecast = data.list.slice(0, 5);
+        
+        if (data && data.list) {
+            const forecast = data.list.slice(0, 5);
 
-        let forecastHtml = "<div class='forecast'>";
-        forecast.forEach(item => {
-            const date = new Date(item.dt * 1000);
-            const day = date.toLocaleDateString('tr-TR', { weekday: 'short' });
-            const temp = item.main.temp;
-            const icon = item.weather[0].icon;
+            let forecastHtml = "<div class='forecast'>";
+            forecast.forEach(item => {
+                const date = new Date(item.dt * 1000);
+                const day = date.toLocaleDateString('tr-TR', { weekday: 'short' });
+                const temp = item.main.temp;
+                const icon = item.weather[0].icon;
 
-            forecastHtml += `
-                <div class="forecast-item">
-                    <h4>${day}</h4>
-                    <img class="weather-icon" src="https://openweathermap.org/img/wn/${icon}.png" alt="weather icon">
-                    <p>${temp}°C</p>
-                </div>
-            `;
-        });
-        forecastHtml += "</div>";
-        document.getElementById("forecast").innerHTML = forecastHtml;
+                forecastHtml += `
+                    <div class="forecast-item">
+                        <h4>${day}</h4>
+                        <img class="weather-icon" src="https://openweathermap.org/img/wn/${icon}.png" alt="weather icon">
+                        <p>${temp}°C</p>
+                    </div>
+                `;
+            });
+            forecastHtml += "</div>";
+            document.getElementById("forecast").innerHTML = forecastHtml;
+        } else {
+            document.getElementById("forecast").innerHTML = "Forecast data not available.";
+        }
     }
 
     // Initial updates
