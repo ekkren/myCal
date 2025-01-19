@@ -30,7 +30,7 @@
             margin: 10px; /* Added margin to create space between panels */
         }
         .left {
-            width: 55%;
+            width: 60%;
             background-color: #e0f7fa; /* Pastel cyan for left panel */
         }
         #istanbul-time {
@@ -40,12 +40,13 @@
             font-size: 48px; /* Decreased font size for date */
         }
         .center {
-            width: 25%;
+            width: 30%;
             background-color: #fce4ec; /* Pastel pink for center panel */
-            font-size: 18px;
+            font-size: 24px;
+            text-align: center;
         }
         .right {
-            width: 20%;
+            width: 10%;
             background-color: #fff3e0; /* Pastel orange for right panel */
             font-size: 18px;
         }
@@ -53,8 +54,8 @@
             margin: 0;
         }
         .weather-icon {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
         }
         .forecast {
             display: flex;
@@ -62,6 +63,17 @@
         }
         .forecast-item {
             margin: 10px 0;
+        }
+        .current-weather {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .current-weather h3 {
+            margin-top: 10px;
+        }
+        .current-weather p {
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -78,14 +90,14 @@
     </div>
 
     <div class="center">
-        <h1>Güncel Hava</h1>
-        <div id="current-weather">
+        <h1>Current Weather</h1>
+        <div id="current-weather" class="current-weather">
             <!-- Current weather info will be displayed here -->
         </div>
     </div>
 
     <div class="right">
-        <h1>5 Günlük Hava Durumu</h1>
+        <h1>5 Day Forecast</h1>
         <div id="forecast">
             <!-- 5 day forecast will be displayed here -->
         </div>
@@ -124,9 +136,9 @@
 
             const weatherHtml = `
                 <div>
-                    <img class="weather-icon" src="https://openweathermap.org/img/wn/${weather.icon}@4x.png" alt="${weather.description}">
-                    <p>${weather.description}</p>
                     <h3>${temperature}°C</h3>
+                    <p>${weather.description}</p>
+                    <img class="weather-icon" src="https://openweathermap.org/img/wn/${weather.icon}.png" alt="${weather.description}">
                 </div>
             `;
             document.getElementById("current-weather").innerHTML = weatherHtml;
@@ -153,7 +165,7 @@
                 forecastHtml += `
                     <div class="forecast-item">
                         <h4>${day}</h4>
-                        <img class="weather-icon" src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon">
+                        <img class="weather-icon" src="https://openweathermap.org/img/wn/${icon}.png" alt="weather icon">
                         <p>${temp}°C</p>
                     </div>
                 `;
