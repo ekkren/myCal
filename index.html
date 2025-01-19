@@ -25,8 +25,6 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
             margin: 10px; /* Added margin to create space between panels */
         }
         .left {
@@ -46,7 +44,7 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Align content to the top of the panel */
             align-items: center;
         }
         .right {
@@ -56,6 +54,7 @@
         }
         h1 {
             margin: 0;
+            padding-bottom: 20px; /* Add space below the title */
         }
         .weather-icon {
             width: 80px;
@@ -95,14 +94,14 @@
     </div>
 
     <div class="center">
-        <h1>Günlük Hava</h1> <!-- Centered title at the top -->
+        <h1>Günlük Hava</h1> <!-- Title at the top of the panel -->
         <div id="current-weather" class="current-weather">
             <!-- Current weather info will be displayed here -->
         </div>
     </div>
 
     <div class="right">
-        <h1>5 Day Forecast</h1>
+        <h1>5 Günlük Hava Durumu</h1> <!-- Title changed to "5 Günlük Hava Durumu" -->
         <div id="forecast">
             <!-- 5 day forecast will be displayed here -->
         </div>
