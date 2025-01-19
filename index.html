@@ -143,7 +143,7 @@
                 <div>
                     <h3>${temperature}°C</h3>
                     <p>${weather.description} ,, ${weather.icon}.png </p>
-                    <img class="weather-icon" src="https://github.com/ekkren/myCal/blob/main/${weather.icon}.png" alt="${weather.description}">
+                    <img class="weather-icon" src="/${weather.icon}.png" alt="${weather.description}">
                 </div>
             `;
             document.getElementById("current-weather").innerHTML = weatherHtml;
@@ -171,7 +171,7 @@
                     <div class="forecast-item">
                         <h4>${day} , ${icon}.png </h4>
                         
-                        <img class="weather-icon" src="https://github.com/ekkren/myCal/blob/main/${icon}.png" alt="weather icon">
+                        <img class="weather-icon" src="./main/${icon}.png" alt="weather icon">
                         <p>${temp}°C</p>
                     </div>
                 `;
